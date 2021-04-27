@@ -4,23 +4,43 @@ const hardUrl = 'https://opentdb.com/api.php?amount=10&category=20&difficulty=ha
 
 
 //fetch for medium
-const mediumQA = () => {
-    fetch(mediumUrl)
+fetch(mediumUrl)
     .then(resp => resp.json())
-    .then(data => console.log(data))
-} 
-mediumQA()
+    .then(data => renderMedium(data))
+    .catch(error => console.error(error))
 
+function renderMedium(data) {
+    data.results.forEach(med => {
+        renderMediumQ(med)})
+}
+function renderMediumQ(data){
+    renderMediumA(data)
+    const questions = data.question
+    console.log(questions)
+}
+function renderMediumA(data) {
+    console.log(data.correct_answer)
+    console.log(data.incorrect_answers)
+}
+
+renderMedium()
 
 //fetch for hard
-const hardQA = () => {
-    fetch(hardUrl)
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-}
-hardQA()
+// fetch(hardUrl)
+//     .then(resp => resp.json())
+//     .then(quiz => renderHard(quiz))
+//     .catch(error => console.error(error))
 
+// function renderHard(data) {
+//     data.results.forEach(hard => {
+//         renderHardQ(hard)})
+//     }
+// function renderHardQ(data){
+//     const questions = data.question
+//     console.log(questions)
+//     }
 
+// renderHardQ()
 //event listeners
 //correct answer
 //dropdown for selecting difficulty 
