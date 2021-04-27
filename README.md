@@ -5,9 +5,9 @@ Project 1 : Version 1
 
     API : Mythological Trivia
 
-url : https://opentdb.com/api.php?amount=10&category=20&difficulty=hard
+url : https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple
 
-url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium 
+url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple
 
     MVP : eventListners_
 
