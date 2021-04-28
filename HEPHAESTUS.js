@@ -1,5 +1,17 @@
 //dropdown for selecting difficulty 
 //on sumbit change ${difficulty} 
+const dropdown = document.getElementById('dropdown')
+dropdown.addEventListener('click', () => {
+    const btn = document.getElementById('dropdownMenuButton')
+    
+
+})
+
+
+
+
+
+
 // global variables
 const apiUrl = 'https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple'
 const hard = 'hard'
@@ -14,11 +26,12 @@ function renderTrivia(data) {
     data.results.forEach(dataArr => {
         renderTriviaQnA(dataArr)})
 }
+
 function renderTriviaQnA(data){
     const newElement = document.createElement("ol")
     const collection = document.querySelector('.questions')
     const options = [...data.incorrect_answers,data.correct_answer]
-
+    console.log(data.correct_answer)
     newElement.innerHTML = `
     <div class="fab my-4" id="1">
     <p class="lead font-weight-heavy text-info" id="q1">Question  
@@ -42,7 +55,30 @@ function renderTriviaQnA(data){
 </div>
     `
     collection.appendChild(newElement); 
+    return shuffle(options)
 }
+
+//shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
+// function shuffle(array) {
+//     var currentIndex = array.length, temporaryValue, randomIndex;
+  
+//     // While there remain elements to shuffle...
+//     while (0 !== currentIndex) {
+  
+//       // Pick a remaining element...
+//       randomIndex = Math.floor(Math.random() * currentIndex);
+//       currentIndex -= 1;
+  
+//       // And swap it with the current element.
+//       temporaryValue = array[currentIndex];
+//       array[currentIndex] = array[randomIndex];
+//       array[randomIndex] = temporaryValue;
+//     }
+  
+//     return array;
+//   }
+
+
 
 //func renderRadio(questionObj) //including options and correct answer
     //radio = createElement(radio)
