@@ -8,33 +8,34 @@ function renderTrivia(data) {
     data.results.forEach(dataArr => {
         renderTriviaQnA(dataArr)})
 }
-
 function renderTriviaQnA(data){
     const newElement = document.createElement("ol")
     const collection = document.querySelector('.questions')
     const options = [...data.incorrect_answers,data.correct_answer]
     console.log(data.correct_answer)
     newElement.innerHTML = `
-    <div class=" fab m-4 p-3 card bg-dark" style="width: 35rem" id="1">
-    <p class="lead font-weight-heavy text-success card-title" id="q1">Question  
-    <p class='text-white'>${data.question}</p></p>
-    <div class="form-check my-3 text-info-50" id="c1">
-        <input type="radio" name='q1' value="A" >
-        <label class="form-check-label rounded text-white"> ${options[2]} </label>
+    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 50rem" id="1">
+        <p class="lead font-weight-heavy text-success card-title" id="q1">Question</p>  
+        <p class='text-white'>${data.question}</p>
+
+
+        <div class="form-check my-3 text-info-50" id="c1">
+            <input type="radio" name='q1' value="A" >
+            <label class="form-check-label text-white"> ${options[2]} </label>
+        </div>
+        <div class="form-check my-3 text-info-50">
+            <input type="radio" name='q1' value="B" >
+            <label class="form-check-label text-white"> ${options[0]} </label>
+        </div>
+        <div class="form-check my-3 text-info-50">
+            <input type="radio" name='q1' value="C" >
+            <label class="form-check-label text-white"> ${options[3]} </label>
+        </div>
+        <div class="form-check my-3 text-info-50">
+            <input type="radio" name='q1' value="D" >
+            <label class="form-check-label text-white"> ${options[1]} </label>
+        </div>
     </div>
-    <div class="form-check my-3 text-info-50">
-        <input type="radio" name='q1' value="B" >
-        <label class="form-check-label text-white"> ${options[0]} </label>
-    </div>
-    <div class="form-check my-3 text-info-50">
-        <input type="radio" name='q1' value="C" >
-        <label class="form-check-label text-white"> ${options[3]} </label>
-    </div>
-    <div class="form-check my-3 text-info-50">
-        <input type="radio" name='q1' value="D" >
-        <label class="form-check-label text-white"> ${options[1]} </label>
-    </div>
-</div>
     `
     collection.appendChild(newElement); 
     // return shuffle(options)
