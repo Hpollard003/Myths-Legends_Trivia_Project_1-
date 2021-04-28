@@ -29,7 +29,7 @@ btn.addEventListener('submit', e => {
     e.preventDefault();
     // console.log(score)
     const newScore = document.querySelector('.score')
-    newScore.innerText = 'hello world'
+    newScore.innerText = 'hello world' + score
 
 })
 function renderTriviaQnA(data, index) {
