@@ -1,3 +1,21 @@
+// global variables
+const answers = ['C','C','C','C','C','C','C','C','C','C']
+const btn = document.querySelector('.trivia-form')
+
+btn.addEventListener('submit' , e => {
+    e.preventDefault();
+    let score = 0;
+    const userA = [btn.q1.value, btn.q2.value];
+
+    userA.forEach((answr, ind) => {
+        if(answr === answers[index]){
+            score += 10;
+        }
+    })
+
+    console.log(score)
+
+})
 //fetch for api data
 fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple`)
     .then(resp => resp.json())
@@ -5,34 +23,38 @@ fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=mu
     .catch(error => console.error(error))
 
 function renderTrivia(data) {
-    data.results.forEach(dataArr => {
-        renderTriviaQnA(dataArr)})
+    data.results.forEach((dataArr, index) => {
+    renderTriviaQnA(dataArr, index)})
+    
+    data.results.forEach(id => {
+        id.id=1
+    })
+    
 }
-function renderTriviaQnA(data){
+function renderTriviaQnA(data , index){
     const newElement = document.createElement("ol")
     const collection = document.querySelector('.questions')
     const options = [...data.incorrect_answers,data.correct_answer]
     console.log(data.correct_answer)
+    const array = [1,2,3,4,5,6,7,8,9,10]
     newElement.innerHTML = `
-    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 50rem" id="1">
-        <p class="lead font-weight-heavy text-success card-title" id="q1">Question</p>  
-        <p class='text-white'>${data.question}</p>
+    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 60rem" id="1">
+        <p class="lead font-weight-heavy text-success card-title" id="q1">${data.question}</p>  
 
-
-        <div class="form-check my-3 text-info-50" id="c1">
-            <input type="radio" name='q1' value="A" >
+        <div class="form-check my-3 " id="c1">
+            <input type="radio" name='q${array[index]}' value="A" >
             <label class="form-check-label text-white"> ${options[2]} </label>
         </div>
-        <div class="form-check my-3 text-info-50">
-            <input type="radio" name='q1' value="B" >
+        <div class="form-check my-3 ">
+            <input type="radio" name='q${array[index]}' value="B" >
             <label class="form-check-label text-white"> ${options[0]} </label>
         </div>
-        <div class="form-check my-3 text-info-50">
-            <input type="radio" name='q1' value="C" >
+        <div class="form-check my-3 ">
+            <input type="radio" name='q${array[index]}' value="C" >
             <label class="form-check-label text-white"> ${options[3]} </label>
         </div>
-        <div class="form-check my-3 text-info-50">
-            <input type="radio" name='q1' value="D" >
+        <div class="form-check my-3 ">
+            <input type="radio" name='q${array[index]}' value="D" >
             <label class="form-check-label text-white"> ${options[1]} </label>
         </div>
     </div>
@@ -40,6 +62,8 @@ function renderTriviaQnA(data){
     collection.appendChild(newElement); 
     // return shuffle(options)
 }
+
+
 
 //dropdown for selecting difficulty 
 //on sumbit change ${difficulty} 
@@ -53,7 +77,7 @@ function renderTriviaQnA(data){
 
 
 // console.log()
-// global variables
+
 
 
 //event psteners
