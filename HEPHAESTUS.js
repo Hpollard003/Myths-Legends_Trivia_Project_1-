@@ -18,7 +18,7 @@ function renderTrivia(data) {
 btn.addEventListener('submit', e => {
     const userA = [btn.answer1.value, btn.answer2.value, btn.answer3.value, btn.answer4.value, btn.answer5.value, btn.answer6.value, btn.answer7.value, btn.answer8.value, btn.answer9.value, btn.answer10.value];
     let score = 0;
-//im getting closer
+
     userA.forEach((answr, ind) => {
         if (answr === answers[ind]) {
             score += 10;
@@ -26,7 +26,7 @@ btn.addEventListener('submit', e => {
     })
     e.preventDefault();
     // console.log(score)
-    
+    scrollTo(0,0)
     newScore.innerHTML = `
     <span class='display-3 text-danger'>${score}% GOD</span>
     `
@@ -76,11 +76,6 @@ function renderTriviaQnA(data, index) {
 // // return level
 // })  
 // let level    
-
-
-// console.log()
-
-
 
 //event psteners
 //correct answer
