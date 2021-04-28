@@ -27,7 +27,9 @@ btn.addEventListener('submit', e => {
         }
     })
     e.preventDefault();
-    console.log(score)
+    // console.log(score)
+    const newScore = document.querySelector('.score')
+    newScore.innerText = 'hello world'
 
 })
 function renderTriviaQnA(data, index) {
