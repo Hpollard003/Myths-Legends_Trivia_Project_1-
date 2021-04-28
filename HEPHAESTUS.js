@@ -1,6 +1,8 @@
 // global variables
 const answers = ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']
 const btn = document.querySelector('.trivia-form')
+const newScore = document.querySelector('.score')
+
 //fetch for api data
 fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple`)
     .then(resp => resp.json())
@@ -28,8 +30,11 @@ btn.addEventListener('submit', e => {
     })
     e.preventDefault();
     // console.log(score)
-    const newScore = document.querySelector('.score')
-    newScore.innerText = 'hello world' + score
+    
+    newScore.innerHTML = `
+    <span class='display-3 text-danger'>${score}% GOD</span>
+    `
+
 
 })
 function renderTriviaQnA(data, index) {
