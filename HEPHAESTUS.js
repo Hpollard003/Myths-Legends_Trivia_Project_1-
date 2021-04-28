@@ -26,10 +26,20 @@ btn.addEventListener('submit', e => {
     })
     e.preventDefault();
     // console.log(score)
-    scrollTo(0,0)
-    newScore.innerHTML = `
-    <span class='display-3 text-danger'>${score}% GOD</span>
+    scrollTo(0, 0)
+
+    let animamation = 0
+    const stopWatch = setInterval(() => {
+        newScore.innerHTML = `
+    <span class='display-3 text-danger'>${animamation}% GOD</span>
     `
+        if (animamation === score) {
+            clearInterval(stopWatch)
+        } else {
+            animamation++
+        } 
+    }, 150)
+
 })
 
 function renderTriviaQnA(data, index) {
