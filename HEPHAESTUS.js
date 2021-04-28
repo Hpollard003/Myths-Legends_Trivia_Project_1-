@@ -5,7 +5,7 @@ const btn = document.querySelector('.trivia-form')
 btn.addEventListener('submit' , e => {
     e.preventDefault();
     let score = 0;
-    const userA = [btn.q1.value, btn.q2.value];
+    const userA = [btn.q1.value, btn.q2.value,];
 
     userA.forEach((answr, ind) => {
         if(answr === answers[index]){
