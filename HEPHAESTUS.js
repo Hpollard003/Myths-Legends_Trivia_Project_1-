@@ -18,10 +18,9 @@ function renderTrivia(data) {
 
 }
 btn.addEventListener('submit', e => {
-    const userA = [btn.q1.value, btn.q2.value, btn.q3.value, btn.q4.value, btn.q5.value, btn.q6.value, btn.q7.value, btn.q8.value, btn.q9.value, btn.q10.value];
-
+    const userA = [btn.answer1.value, btn.answer2.value, btn.answer3.value, btn.answer4.value, btn.answer5.value, btn.answer6.value, btn.answer7.value, btn.answer8.value, btn.answer9.value, btn.answer10.value];
     let score = 0;
-
+//im getting closer
     userA.forEach((answr, ind) => {
         if (answr === answers[ind]) {
             score += 10;
@@ -32,30 +31,30 @@ btn.addEventListener('submit', e => {
 
 })
 function renderTriviaQnA(data, index) {
-    console.log(index)
+    // console.log(index)
     const newElement = document.createElement("ol")
     const collection = document.querySelector('.questions')
     const options = [...data.incorrect_answers, data.correct_answer]
-    console.log(data.correct_answer)
+    // console.log(data.correct_answer)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
     <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 60rem" id="1">
         <p class="lead font-weight-heavy text-success card-title" id="q1">${data.question}</p>  
 
         <div class="form-check my-3 " id="c1">
-            <input type="radio" name='q${answers[index]}' value="A" >
+            <input type="radio" name='answer${answers[index]}' value="A" >
             <label class="form-check-label text-white"> ${options[2]} </label>
         </div>
         <div class="form-check my-3 ">
-            <input type="radio" name='q${answers[index]}' value="B" >
+            <input type="radio" name='answer${answers[index]}' value="B" >
             <label class="form-check-label text-white"> ${options[0]} </label>
         </div>
         <div class="form-check my-3 ">
-            <input type="radio" name='q${answers[index]}' value="C" >
+            <input type="radio" name='answer${answers[index]}' value="C" >
             <label class="form-check-label text-white"> ${options[3]} </label>
         </div>
         <div class="form-check my-3 ">
-            <input type="radio" name='q${answers[index]}' value="D" >
+            <input type="radio" name='answer${answers[index]}' value="D" >
             <label class="form-check-label text-white"> ${options[1]} </label>
         </div>
     </div>
