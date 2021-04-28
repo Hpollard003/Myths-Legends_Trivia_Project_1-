@@ -1,23 +1,5 @@
-//dropdown for selecting difficulty 
-//on sumbit change ${difficulty} 
-const dropdown = document.getElementById('dropdown')
-dropdown.addEventListener('click', () => {
-    const btn = document.getElementById('dropdownMenuButton')
-    
-
-})
-
-
-
-
-
-
-// global variables
-const apiUrl = 'https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple'
-const hard = 'hard'
-const medium = 'medium'
 //fetch for api data
-fetch(apiUrl)
+fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple`)
     .then(resp => resp.json())
     .then(data => renderTrivia(data))
     .catch(error => console.error(error))
@@ -33,16 +15,16 @@ function renderTriviaQnA(data){
     const options = [...data.incorrect_answers,data.correct_answer]
     console.log(data.correct_answer)
     newElement.innerHTML = `
-    <div class="fab my-4" id="1">
-    <p class="lead font-weight-heavy text-info" id="q1">Question  
+    <div class=" fab m-4 p-3 card bg-dark" style="width: 35rem" id="1">
+    <p class="lead font-weight-heavy text-success card-title" id="q1">Question  
     <p class='text-white'>${data.question}</p></p>
     <div class="form-check my-3 text-info-50" id="c1">
         <input type="radio" name='q1' value="A" >
-        <label class="form-check-label text-white"> ${options[2]} </label>
+        <label class="form-check-label rounded text-white"> ${options[2]} </label>
     </div>
     <div class="form-check my-3 text-info-50">
         <input type="radio" name='q1' value="B" >
-        <label class="form-check-label text-white"> ${options[0]}</label>
+        <label class="form-check-label text-white"> ${options[0]} </label>
     </div>
     <div class="form-check my-3 text-info-50">
         <input type="radio" name='q1' value="C" >
@@ -55,8 +37,31 @@ function renderTriviaQnA(data){
 </div>
     `
     collection.appendChild(newElement); 
-    return shuffle(options)
+    // return shuffle(options)
 }
+
+//dropdown for selecting difficulty 
+//on sumbit change ${difficulty} 
+// const dropdown = document.getElementById('dropdown')
+
+// dropdown.addEventListener('change', (e) => {
+// level = e.target.value
+// // return level
+// })  
+// let level    
+
+
+// console.log()
+// global variables
+
+
+//event psteners
+//correct answer
+//popup
+//render questions to webpage
+
+
+
 
 //shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
 // function shuffle(array) {
@@ -95,8 +100,4 @@ function renderTriviaQnA(data){
     //then apply css red or green for each element
     //render correctCount
 
-//event psteners
-//correct answer
 
-//popup
-//render questions to webpage
