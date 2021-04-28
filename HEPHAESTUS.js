@@ -4,7 +4,7 @@ const btn = document.querySelector('.trivia-form')
 const newScore = document.querySelector('.score')
 
 //fetch for api data
-fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple`)
+fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple`)
     .then(resp => resp.json())
     .then(data => renderTrivia(data))
     .catch(error => console.error(error))
@@ -12,10 +12,6 @@ fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=mu
 function renderTrivia(data) {
     data.results.forEach((dataArr, index) => {
         renderTriviaQnA(dataArr, index)
-    })
-
-    data.results.forEach(id => {
-        id.id = 1
     })
 
 }
@@ -34,9 +30,8 @@ btn.addEventListener('submit', e => {
     newScore.innerHTML = `
     <span class='display-3 text-danger'>${score}% GOD</span>
     `
-
-
 })
+
 function renderTriviaQnA(data, index) {
     // console.log(index)
     const newElement = document.createElement("ol")
@@ -45,7 +40,7 @@ function renderTriviaQnA(data, index) {
     // console.log(data.correct_answer)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
-    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 60rem" id="1">
+    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 80rem" id="1">
         <p class="lead font-weight-heavy text-success card-title" id="q1">${data.question}</p>  
 
         <div class="form-check my-3 " id="c1">
