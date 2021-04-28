@@ -3,18 +3,75 @@ const answers = ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']
 const btn = document.querySelector('.trivia-form')
 const newScore = document.querySelector('.score')
 
-//fetch for api data
+
+//fetching the api data
 fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple`)
     .then(resp => resp.json())
     .then(data => renderTrivia(data))
     .catch(error => console.error(error))
-
+//render data from API
 function renderTrivia(data) {
     data.results.forEach((dataArr, index) => {
         renderTriviaQnA(dataArr, index)
     })
 
 }
+function renderTriviaQnA(data, index) {
+    // console.log(index)
+    const newElement = document.createElement("ol")
+    const collection = document.querySelector('.questions')
+    const options = [...data.incorrect_answers, data.correct_answer]
+    // console.log(data.correct_answer)
+    const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    newElement.innerHTML = `
+    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded" style="width: 80rem" id="1">
+        <p class="lead font-weight-heavy text-success card-title" id="q1">${data.question}</p>  
+
+        <div class="answer form-check my-3 " id="c1">
+            <input type="radio" name='answer${answers[index]}' value="A" >
+            <label class="form-check-label "> ${options[2]} </label>
+        </div>
+        <div class="answer form-check my-3 ">
+            <input type="radio" name='answer${answers[index]}' value="B" >
+            <label class="form-check-label "> ${options[0]} </label>
+        </div>
+        <div class="answer form-check my-3 ">
+            <input type="radio" name='answer${answers[index]}' value="C" >
+            <label class="form-check-label "> ${options[3]} </label>
+        </div>
+        <div class="answer form-check my-3 ">
+            <input type="radio" name='answer${answers[index]}' value="D" >
+            <label class="form-check-label "> ${options[1]} </label>
+        </div>
+    </div>
+    `
+
+    collection.appendChild(newElement);
+    // options.reverse()
+    // return shuffle(options)
+}
+
+//shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
+// function shuffle(answers) {
+//     var currentIndex = answers.length, temporaryValue, randomIndex;
+
+//     // While there remain elements to shuffle...
+//     while (0 !== currentIndex) {
+
+//       // Pick a remaining element...
+//       randomIndex = Math.floor(Math.random() * currentIndex);
+//       currentIndex -= 1;
+
+//       // And swap it with the current element.
+//       temporaryValue = answers[currentIndex];
+//       answers[currentIndex] = answers[randomIndex];
+//       answers[randomIndex] = temporaryValue;
+//     }
+
+//     return answers;
+//   }
+
+//event listeners
 btn.addEventListener('submit', e => {
     const userA = [btn.answer1.value, btn.answer2.value, btn.answer3.value, btn.answer4.value, btn.answer5.value, btn.answer6.value, btn.answer7.value, btn.answer8.value, btn.answer9.value, btn.answer10.value];
     let score = 0;
@@ -38,42 +95,13 @@ btn.addEventListener('submit', e => {
         } else {
             animamation++
         } 
-    }, 150)
+    }, 50)
+
 
 })
+const click = document.getElementsByClassName('answer')
 
-function renderTriviaQnA(data, index) {
-    // console.log(index)
-    const newElement = document.createElement("ol")
-    const collection = document.querySelector('.questions')
-    const options = [...data.incorrect_answers, data.correct_answer]
-    // console.log(data.correct_answer)
-    const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    newElement.innerHTML = `
-    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 80rem" id="1">
-        <p class="lead font-weight-heavy text-success card-title" id="q1">${data.question}</p>  
 
-        <div class="form-check my-3 " id="c1">
-            <input type="radio" name='answer${answers[index]}' value="A" >
-            <label class="form-check-label text-white"> ${options[2]} </label>
-        </div>
-        <div class="form-check my-3 ">
-            <input type="radio" name='answer${answers[index]}' value="B" >
-            <label class="form-check-label text-white"> ${options[0]} </label>
-        </div>
-        <div class="form-check my-3 ">
-            <input type="radio" name='answer${answers[index]}' value="C" >
-            <label class="form-check-label text-white"> ${options[3]} </label>
-        </div>
-        <div class="form-check my-3 ">
-            <input type="radio" name='answer${answers[index]}' value="D" >
-            <label class="form-check-label text-white"> ${options[1]} </label>
-        </div>
-    </div>
-    `
-    collection.appendChild(newElement);
-    // return shuffle(options)
-}
 
 
 
@@ -87,7 +115,7 @@ function renderTriviaQnA(data, index) {
 // })  
 // let level    
 
-//event psteners
+
 //correct answer
 //popup
 //render questions to webpage
@@ -95,25 +123,7 @@ function renderTriviaQnA(data, index) {
 
 
 
-//shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
-// function shuffle(answers) {
-//     var currentIndex = answers.length, temporaryValue, randomIndex;
 
-//     // While there remain elements to shuffle...
-//     while (0 !== currentIndex) {
-
-//       // Pick a remaining element...
-//       randomIndex = Math.floor(Math.random() * currentIndex);
-//       currentIndex -= 1;
-
-//       // And swap it with the current element.
-//       temporaryValue = answers[currentIndex];
-//       answers[currentIndex] = answers[randomIndex];
-//       answers[randomIndex] = temporaryValue;
-//     }
-
-//     return answers;
-//   }
 
 
 
