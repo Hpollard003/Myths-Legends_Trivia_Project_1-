@@ -5,7 +5,8 @@ const newScore = document.querySelector('.score')
 
 
 //fetching the api data
-fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple`)
+function fetchApis(level){
+fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=${level}&type=multiple`)
     .then(resp => resp.json())
     .then(data => renderTrivia(data))
     .catch(error => console.error(error))
@@ -15,12 +16,21 @@ function renderTrivia(data) {
         renderTriviaQnA(dataArr, index)
     })
 
-}
+}}
 function renderTriviaQnA(data, index) {
     // console.log(index)
     const newElement = document.createElement("ol")
+    newElement.innerHTML = ""
     const collection = document.querySelector('.questions')
-    const options = [...data.incorrect_answers, data.correct_answer]
+    let options = [...data.incorrect_answers, data.correct_answer]
+    // options = shuffle(options)
+    //options.forEach()
+        // create div, input and label
+        // attach event listen to input 
+        //input.addEventListener()
+            //if(target.value == data.correct_answer)
+                //correct++
+
     // console.log(data.correct_answer)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
@@ -52,24 +62,24 @@ function renderTriviaQnA(data, index) {
 }
 
 //shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
-// function shuffle(answers) {
-//     var currentIndex = answers.length, temporaryValue, randomIndex;
+function shuffle(answers) {
+    var currentIndex = answers.length, temporaryValue, randomIndex;
 
-//     // While there remain elements to shuffle...
-//     while (0 !== currentIndex) {
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
 
-//       // Pick a remaining element...
-//       randomIndex = Math.floor(Math.random() * currentIndex);
-//       currentIndex -= 1;
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
 
-//       // And swap it with the current element.
-//       temporaryValue = answers[currentIndex];
-//       answers[currentIndex] = answers[randomIndex];
-//       answers[randomIndex] = temporaryValue;
-//     }
+      // And swap it with the current element.
+      temporaryValue = answers[currentIndex];
+      answers[currentIndex] = answers[randomIndex];
+      answers[randomIndex] = temporaryValue;
+    }
 
-//     return answers;
-//   }
+    return answers;
+  }
 
 //event listeners
 btn.addEventListener('submit', e => {
@@ -107,25 +117,18 @@ const click = document.getElementsByClassName('answer')
 
 //dropdown for selecting difficulty 
 //on sumbit change ${difficulty} 
-// const dropdown = document.getElementById('dropdown')
+const dropdown = document.getElementById('dropdown')
 
-// dropdown.addEventListener('change', (e) => {
-// level = e.target.value
-// // return level
-// })  
+dropdown.addEventListener('change', (e) => {
+    const level = e.target.value
+    fetchApis(level)
+})  
 // let level    
 
 
 //correct answer
 //popup
 //render questions to webpage
-
-
-
-
-
-
-
 
 //func renderRadio(questionObj) //including options and correct answer
     //radio = createElement(radio)
@@ -135,7 +138,9 @@ const click = document.getElementsByClassName('answer')
            // correctCount++ 
            // event.target.className = 'correct'
 //}
-
+//qs all label correct
+//on click lock radio
+//on sumbit change color bg-success and bg-danger
 //on submit 
     //querySelectorAll (css suedo selector for selected radio buttons)
     // iterate over the node pst, check for attribute indicting if it was corect or not
