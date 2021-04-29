@@ -98,7 +98,7 @@ btn.addEventListener('submit', e => {
     let animamation = 0
     const stopWatch = setInterval(() => {
         newScore.innerHTML = `
-    <span class='display-3 text-danger'>${animamation}% GOD</span>
+    <span class='display-3 text-danger'>${animamation}% GOD!!!</span>
     `
         if (animamation === score) {
             clearInterval(stopWatch)
