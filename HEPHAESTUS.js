@@ -1,39 +1,16 @@
 // global variables
-const click = document.querySelectorAll('.answer')
+const click = document.getElementsByClassName('answer')
 const collection = document.querySelector('.questions')
-const answers = ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']
 const btn = document.querySelector('.trivia-form')
 const newScore = document.querySelector('.score')
-
-//event listeners
-btn.addEventListener('submit', e => {
-    const userA = [btn.answer1.value, btn.answer2.value, btn.answer3.value, btn.answer4.value, btn.answer5.value, btn.answer6.value, btn.answer7.value, btn.answer8.value, btn.answer9.value, btn.answer10.value];
-    let score = 0;
-    userA.forEach((answr, ind) => {
-        if (answr === answers[ind]) {
-            //.innerText === data.correct_answer
-            score += 10;
-        }
-    })
-    e.preventDefault();
-    // console.log(score)
-    scrollTo(0, 0)
-    // console.log(data)
-    
-    let animamation = 0
-    const stopWatch = setInterval(() => {
-        newScore.innerHTML = `
-    <span class='display-3 text-danger'>${animamation}% GOD!!!</span>
-    `
-        if (animamation === score) {
-            clearInterval(stopWatch)
-        } else {
-            animamation++
-        }
-    }, 50)
+const things = document.querySelectorAll('.questions')
+const option = document.querySelectorAll('.options')
+const correct = document.querySelector('.correct')
+const incorrect = document.querySelector('.incorrect')
+let scoredCorrectly = 1
+let scoredIncorrectly = 1
 
 
-})
 
 //fetching the api data
 function fetchApis(level) {
@@ -54,55 +31,34 @@ function renderTriviaQnA(data, index) {
     const newElement = document.createElement("ol")
     let options = [...data.incorrect_answers, data.correct_answer]
     options = shuffle(options)
-    //options.forEach()
-    // create div, input and label
-    // attach event listen to input 
-    //input.addEventListener()
-    //if(target.value == data.correct_answer)
-    //correct++
-    newElement.innerHTML = "<div>  </div>"
-    
-    // console.log(data.correct_answer)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
-    <div class=" fab m-4 p-3 card bg-dark bg-gradient rounded" style="width: 80rem" id="1">
+    <div class="question fab m-4 p-3 card bg-dark bg-gradient rounded" style="width: 80rem" id="1">
     <p class="lead font-weight-heavy text-success card-title" id="q1">${data.question}</p>  
     
-    <div class="radio form-check my-3 " id="c1">
-    <input type="radio" name='answer${answers[index]}' value="A" >
-    <label class="ans form-check-label "> ${options[2]} </label>
+    <div class="answer form-check my-3 " id="c1">
+    <ul type="block" name='answer${answers[index]}'>
+    <label class="options "> ${options[2]} </label></ul>
     </div>
-    <div class="radio form-check my-3 ">
-    <input type="radio" name='answer${answers[index]}' value="B" >
-    <label class="ans form-check-label "> ${options[0]} </label>
+    <div class="answer form-check my-3 ">
+    <ul type="block" name='answer${answers[index]}'>
+    <label class="options "> ${options[0]} </label></ul>
     </div>
-    <div class="radio form-check my-3 ">
-    <input type="radio" name='answer${answers[index]}' value="C" >
-    <label class="ans form-check-label "> ${options[3]} </label>
+    <div class="answer form-check my-3 ">
+    <ul type="block" name='answer${answers[index]}'>
+    <label class="options "> ${options[3]} </label></ul>
     </div>
-    <div class="radio form-check my-3 ">
-    <input type="radio" name='answer${answers[index]}' value="D" >
-    <label class="ans form-check-label "> ${options[1]} </label>
+    <div class="answer form-check my-3 ">
+    <ul type="block" name='answer${answers[index]}'>
+    <label class="options "> ${options[1]} </label></ul>
     </div>
     </div>
     `
     collection.appendChild(newElement);
-    const ans = document.querySelectorAll('.radio')
-    ans.forEach(scoreInd => {
-        scoreInd.addEventListener('click' , (e) => {
-            
-            if(e.target.innerText == data.correct_answer){
-                e.target.className = 'correct' 
-            }
-            else if(e.target.innerText == data.incorrect_answers){
-                e.target.className = 'incorrect' 
-            }
-            else{
-                console.log(data.correct_answer)
-            }
-        })
-    })
+    // options.reverse()
+    eventAnswers(data)
 }
+
 //shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
 function shuffle(answers) {
     var currentIndex = answers.length, temporaryValue, randomIndex;
@@ -123,41 +79,49 @@ function shuffle(answers) {
     return answers;
 }
 
-
-
-
-
-
 //dropdown for selecting difficulty 
-//on sumbit change ${difficulty} 
 const dropdown = document.getElementById('dropdown')
-
 dropdown.addEventListener('change', (e) => {
     const level = e.target.value
     fetchApis(level)
 })
-// let level
+
+//render Answer
+//event listeners
+
+function eventAnswers(data) {
+    things.forEach(question => {
+        question.addEventListener('click', (e) => {
+            const value = e.target.innerText
+            if (value == data.correct_answer) {
+                correct.innerHTML = `
+                Correct Answers  <i class="far fa-thumbs-up"></i> <h3>${scoredCorrectly++}</h3>
+                `
+            }
+            else if(value != data.correct_answer){
+                incorrect.innerHTML = `
+                Incorrect Answers  <i class="far fa-thumbs-down"></i> <h3>${scoredIncorrectly+=1}</h3>
+                `
+            }
+        
+        })
+    })
 
 
-//correct answer
-//popup
-//render questions to webpage
+    let animamation = 0
+    const stopWatch = setInterval(() => {
+        newScore.innerHTML = `
+    <span class='display-3 text-primary'>${animamation}% GOD!!!</span>
+    `
+        if (animamation === scoredCorrectly) {
+            clearInterval(stopWatch)
+        } else {
+            animamation++
+        }
+    }, 50)
 
-//func renderRadio(questionObj) //including options and correct answer
-    //radio = createElement(radio)
-    //add html 
-    ///radio.addEventpstener(cpck) 
-        //if(value == correct_answer){
-           // correctCount++ 
-           // event.target.className = 'correct'
-//}
-//qs all label correct
-//on click lock radio
-//on sumbit change color bg-success and bg-danger
-//on submit 
-    //querySelectorAll (css suedo selector for selected radio buttons)
-    // iterate over the node pst, check for attribute indicting if it was corect or not
-    //then apply css red or green for each element
-    //render correctCount
+}
+
+
 
 

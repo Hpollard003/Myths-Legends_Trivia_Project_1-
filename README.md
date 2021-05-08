@@ -1,9 +1,10 @@
 # Myths-Legends_Trivia_Project_1-
 
-Project 1 : Version 1
+Project 1 : Version 7
     By : Hunter PollardIII
 
     API : Mythological Trivia
+url : https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple
 
 url : https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple
 
