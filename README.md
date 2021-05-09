@@ -11,11 +11,11 @@ url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=m
 
     MVP : eventListners_
 
-1: DOMContentLoaded eventListner fetch request then render the questions to the page.
+1: Animated score
 
 2: Click event on difficulty dropdown and under each question that tells the user if they got the question right.
 
-3: Sumbit event that will take the value of correct answers and give the user a score.
+3: Live results
 
     GUI : As a user : 
 
@@ -24,3 +24,5 @@ url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=m
 2: I want to be able to select the difficulty of the trivia quiz. 
 
 3: Get a score on how I did.  
+
+4: Gallery of pictures.

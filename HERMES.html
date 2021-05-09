@@ -16,12 +16,12 @@
     <!--   Body Header   -->
     <div class="intro shadow-lg bg-dark bg-gradient py-4 text-center sticky-top">
         <div class="container">
-            <h2 class="headliner display-2 my-4"> <i class="fab fa-d-and-d fst-italic"> Myths & Legends Trivia</i> <i class="fab fa-phoenix-framework"></i></h2>
-            <h3 class="fab score intro-line fs-2">Lets Test Your Skill ! 
+            <h2 class="headliner display-2 my-4"> <i class="fab fa-d-and-d fst-italic "> Myths & Legends Trivia</i> <i class="fab fa-phoenix-framework"></i></h2>
+            <h3 class="fab score intro-line fs-2 ">Lets Test Your Skill ! 
                                     <!--DropDown-->
             <div class="dropdown fs-4 " id="dropdown"> 
-                <label class="text-success bg-dark py-3" for="Difficulty"></label>
-                <select name="Difficulty" id="dropdownMenuButton" class="bg-dark border-dark bg-gradient text-light">
+                <label class="text-success bg-dark py-3 " for="Difficulty"></label>
+                <select name="Difficulty" id="dropdownMenuButton" class="bg-dark border-dark bg-gradient text-light shadow-lg">
                     <option value="select">Select Difficulty</option>
                     <option value="medium">Children's Folklore.</option>
                     <option value="hard">Was Once A God.</option>
@@ -34,14 +34,24 @@
     <!--  Trivia body   -->
     <div class=" trivia rounded-bottom">
         <div class="container m-5">
-            <div class="bg-dark bg-gradient rounded-bottom p-4 fixed-top " style="width: fit-content">
+            <div class="bg-dark bg-gradient rounded-bottom p-4 fixed-top shadow-lg" style="width: fit-content">
             <div class="correct"></div>
             <div class="incorrect"></div>
             </div>
         </div>
             <!--  Trivia Questions  -->
             <form class="trivia-form text-light fs-5 ">
-            <div class="questions text-center py-4 " id="questions"></div>
+            <div class="questions text-center py-4 " id="questions">
+                <h1 class="display-1 p-3 headliner fw-bold ">Gallery</h1>
+                <div class="text-center ">
+                    <img src="./assets/loki.jpg" class="img rounded float-start " alt="...">
+                    <img src="./assets/Ouroborus.jpg" class="img rounded float-end" alt="...">
+                    <img src="./assets/vulcan.jpg" class="img rounded" alt="...">
+                    <img src="./assets/talos2.gif" class="img rounded " alt="...">
+                    <img src="./assets/wendy.jpg" class="img rounded float-start " alt="...">
+                    <img src="./assets/bigboy.jpg" class="img rounded float-end" alt="...">
+                </div>
+            </div>
             </form>
         </div>
     </div>

@@ -32,8 +32,8 @@ function renderTriviaQnA(data, index) {
     options = shuffle(options)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
-    <div class="question border-white fab m-4 p-3 card bg-dark bg-gradient rounded-pill " style="width: 80rem" id="1">
-    <p class="lead qTitle card-title fs-4" id="q">${data.question}</p>  
+    <div class="question border-white fab m-4 p-3 card bg-dark bg-gradient rounded-pill " style="width: 90rem" id="1">
+    <p class="lead qTitle card-title fs-4 " id="q">${data.question}</p>  
     
     <div class="answer form-check my-3 " id="c1">
     <ul type="block" name='answer${answers[index]}'>
@@ -60,7 +60,7 @@ function renderTriviaQnA(data, index) {
 
 //shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)//
 function shuffle(answers) {
-    var currentIndex = answers.length, temporaryValue, randomIndex;
+    let currentIndex = answers.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
@@ -101,7 +101,7 @@ function eventAnswers(data) {
             }
             else {
                 incorrect.innerHTML = `
-                Incorrect Answers  <i class="far fa-thumbs-down"></i> <p>Do exist</p>
+                Incorrect Answers  <i class="far fa-thumbs-down fs-3"></i> <p>Do exist</p>
                 `
             }
 
@@ -119,7 +119,5 @@ function eventAnswers(data) {
         })
     })
 }
-
-
 
 
