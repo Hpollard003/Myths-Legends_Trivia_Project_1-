@@ -7,5 +7,17 @@ body {
     color: lime;
 }
 .incorrect{
-    color: red;
+    color: rgb(253, 63, 63);
+}
+.headliner{
+    color:#F75C03
+}
+.intro-line{
+    color: rgb(9,188,140)
+}
+.qTitle{
+    color:#F75C03
+}
+.godRating{
+    color:#17bebb
 }

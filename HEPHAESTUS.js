@@ -1,4 +1,4 @@
-// global variables
+// global variables//
 const click = document.getElementsByClassName('answer')
 const collection = document.querySelector('.questions')
 const btn = document.querySelector('.trivia-form')
@@ -9,10 +9,9 @@ const correct = document.querySelector('.correct')
 const incorrect = document.querySelector('.incorrect')
 let scoredCorrectly = 1
 let scoredIncorrectly = 1
+const dropdown = document.getElementById('dropdown')
 
-
-
-//fetching the api data
+//fetching the api data//
 function fetchApis(level) {
     fetch(`https://opentdb.com/api.php?amount=10&category=20&difficulty=${level}&type=multiple`)
         .then(resp => resp.json())
@@ -33,8 +32,8 @@ function renderTriviaQnA(data, index) {
     options = shuffle(options)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
-    <div class="question fab m-4 p-3 card bg-dark bg-gradient rounded-pill" style="width: 80rem" id="1">
-    <p class="lead font-weight-heavy text-success card-title" id="q">${data.question}</p>  
+    <div class="question border-white fab m-4 p-3 card bg-dark bg-gradient rounded-pill " style="width: 80rem" id="1">
+    <p class="lead qTitle card-title fs-4" id="q">${data.question}</p>  
     
     <div class="answer form-check my-3 " id="c1">
     <ul type="block" name='answer${answers[index]}'>
@@ -59,7 +58,7 @@ function renderTriviaQnA(data, index) {
     eventAnswers(data)
 }
 
-//shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)
+//shuffle correct answers(Special thanks to the creators of the Fisher-Yates (aka Knuth) Shuffle.)//
 function shuffle(answers) {
     var currentIndex = answers.length, temporaryValue, randomIndex;
 
@@ -79,17 +78,14 @@ function shuffle(answers) {
     return answers;
 }
 
-//dropdown for selecting difficulty 
-const dropdown = document.getElementById('dropdown')
+//dropdown for selecting difficulty//
 dropdown.addEventListener('change', (e) => {
     const level = e.target.value
     fetchApis(level)
     collection.innerHTML = " "
 })
 
-//render Answer
-//event listeners
-
+//event listeners//
 function eventAnswers(data) {
 
     things.forEach(question => {
@@ -99,12 +95,13 @@ function eventAnswers(data) {
 
             if (value == data.correct_answer) {
                 correct.innerHTML = `
-                Correct Answers  <i class="far fa-thumbs-up"></i> <h4>${scoredCorrectly++}</h4>
+                Correct Answers  <i class="far fa-thumbs-up"></i> <h2 class='correct'>${scoredCorrectly++}</h2>
                 `
+                e.target.style.color = 'lime'
             }
             else {
                 incorrect.innerHTML = `
-                Incorrect Answers  <i class="far fa-thumbs-down"></i> <h6>Do exist</h6>
+                Incorrect Answers  <i class="far fa-thumbs-down"></i> <p>Do exist</p>
                 `
             }
 
