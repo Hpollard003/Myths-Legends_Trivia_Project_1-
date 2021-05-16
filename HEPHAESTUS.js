@@ -1,17 +1,9 @@
 // global variables//
 document.addEventListener('DOMContentLoaded' , () => {
-    
-const click = document.getElementsByClassName('answer')
+
 const collection = document.querySelector('.questions')
-const btn = document.querySelector('.trivia-form')
-const newScore = document.querySelector('.score')
-const things = document.querySelectorAll('.questions')
-const option = document.querySelectorAll('.options')
-const correct = document.querySelector('.correct')
-const incorrect = document.querySelector('.incorrect')
 let scoredCorrectly = 1
 let scoredIncorrectly = 1
-const dropdown = document.getElementById('dropdown')
 
 //fetching the api data//
 function fetchApis(level) {
@@ -29,6 +21,7 @@ function fetchApis(level) {
 }
 function renderTriviaQnA(data, index) {
     // console.log(index)
+    const option = document.querySelectorAll('.options')
     const newElement = document.createElement("ol")
     let options = [...data.incorrect_answers, data.correct_answer]
     options = shuffle(options)
@@ -55,6 +48,7 @@ function renderTriviaQnA(data, index) {
     </div>
     </div>
     `
+    gallery.innerText = ' '
     collection.appendChild(newElement);
     // options.reverse()
     eventAnswers(data)
@@ -82,6 +76,7 @@ function shuffle(answers) {
 
 //dropdown for selecting difficulty//
 dropdown.addEventListener('change', (e) => {
+    const dropdown = document.getElementById('dropdown')
     const level = e.target.value
     fetchApis(level)
     collection.innerHTML = " "
@@ -89,12 +84,12 @@ dropdown.addEventListener('change', (e) => {
 
 //event listeners//
 function eventAnswers(data) {
-
+    const things = document.querySelectorAll('.questions')
     things.forEach(question => {
         question.addEventListener('click', (e) => {
             const value = e.target.innerText
             const nope = data.incorrect_answers
-
+            const correct = document.querySelector('.correct')
             if (value == data.correct_answer) {
                 correct.innerHTML = `
                 Correct Answers  <i class="far fa-thumbs-up"></i> <h2 class='correct'>${scoredCorrectly++}</h2>
@@ -102,12 +97,14 @@ function eventAnswers(data) {
                 e.target.style.color = 'lime'
             }
             else {
+                const incorrect = document.querySelector('.incorrect')
                 incorrect.innerHTML = `
                 Incorrect Answers  <i class="far fa-thumbs-down fs-3"></i> <p>Do exist</p>
                 `
             }
 
             let animamation = 0
+            const newScore = document.querySelector('.score')
             const stopWatch = setInterval(() => {
                 newScore.innerHTML = `
     <span class='display-3 text-primary'>${animamation}% GOD!!!</span>
@@ -121,5 +118,21 @@ function eventAnswers(data) {
         })
     })
 }
+
+const gallery = document.querySelector('.gallery')
+gallery.addEventListener('click' , () => {
+    const images = document.querySelector('.images')
+    images.innerHTML = `
+    <img src="./assets/loki.jpg" class="img rounded float-start ">
+    <img src="./assets/Ouroborus.jpg" class="img rounded float-end">
+    <img src="./assets/vulcan.jpg" class="img rounded">
+    <img src="./assets/talos2.gif" class="img rounded ">
+    <img src="./assets/wendy.jpg" class="img rounded float-start ">
+    <img src="./assets/bigboy.jpg" class="img rounded float-end">
+    
+    `
 })
+
+})
+
 
