@@ -92,14 +92,14 @@ function eventAnswers(data) {
             const correct = document.querySelector('.correct')
             if (value == data.correct_answer) {
                 correct.innerHTML = `
-                Correct Answers  <i class="far fa-thumbs-up"></i> <h2 class='correct'>${scoredCorrectly++}</h2>
+                <i class="far fa-thumbs-up fs-3" ></i> <h2 class='correct'>${scoredCorrectly++}</h2>
                 `
                 e.target.style.color = 'lime'
             }
-            else {
+            else if(value != data.correct_answer){
                 const incorrect = document.querySelector('.incorrect')
                 incorrect.innerHTML = `
-                Incorrect Answers  <i class="far fa-thumbs-down fs-3"></i> <p>Do exist</p>
+                <i class="far fa-thumbs-down fs-3"></i> <h2>Mistakes Were Made</h2>
                 `
             }
 
@@ -123,13 +123,18 @@ const gallery = document.querySelector('.gallery')
 gallery.addEventListener('click' , () => {
     const images = document.querySelector('.images')
     images.innerHTML = `
-    <img src="./assets/loki.jpg" class="img rounded float-start ">
-    <img src="./assets/Ouroborus.jpg" class="img rounded float-end">
-    <img src="./assets/vulcan.jpg" class="img rounded">
-    <img src="./assets/talos2.gif" class="img rounded ">
-    <img src="./assets/wendy.jpg" class="img rounded float-start ">
-    <img src="./assets/bigboy.jpg" class="img rounded float-end">
-    
+    <img src="./assets/hades.gif" class="img">
+    <img src="./assets/vulcan.jpg" class="img float-start ">
+    <img src="./assets/raggy.gif" class="img float-end">
+    <img src="./assets/talos2.gif" class="img ">
+    <img src="./assets/loki.jpg" class="img float-start ">
+    <img src="./assets/Ouroborus.jpg" class="img float-end">
+    <img src="./assets/gm.gif" class="img ">
+    <img src="./assets/wendy.jpg" class="img float-start ">
+    <img src="./assets/bigboy.jpg" class="img float-end">
+    <img src="./assets/greekvase.gif" class="img ">
+    <img src="./assets/yggdrasil.jpg" class="img float-start ">
+    <img src="./assets/zeus.gif" class="img float-end">
     `
 })
 
