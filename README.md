@@ -9,7 +9,7 @@ url : https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=mul
 
 url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple
 
-    MVP : eventListners_
+    Event Listners :
 
 1: Animated score
 

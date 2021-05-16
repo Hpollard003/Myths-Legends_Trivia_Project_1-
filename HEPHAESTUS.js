@@ -1,4 +1,6 @@
 // global variables//
+document.addEventListener('DOMContentLoaded' , () => {
+    
 const click = document.getElementsByClassName('answer')
 const collection = document.querySelector('.questions')
 const btn = document.querySelector('.trivia-form')
@@ -119,5 +121,5 @@ function eventAnswers(data) {
         })
     })
 }
-
+})
 
