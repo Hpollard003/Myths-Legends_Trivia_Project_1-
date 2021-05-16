@@ -123,17 +123,17 @@ const gallery = document.querySelector('.gallery')
 gallery.addEventListener('click' , () => {
     const images = document.querySelector('.images')
     images.innerHTML = `
-    <img src="./assets/hades.gif" class="img">
     <img src="./assets/vulcan.jpg" class="img float-start ">
+    <img src="./assets/hades.gif" class="img">
     <img src="./assets/raggy.gif" class="img float-end">
-    <img src="./assets/talos2.gif" class="img ">
     <img src="./assets/loki.jpg" class="img float-start ">
+    <img src="./assets/talos2.gif" class="img ">
     <img src="./assets/Ouroborus.jpg" class="img float-end">
-    <img src="./assets/gm.gif" class="img ">
     <img src="./assets/wendy.jpg" class="img float-start ">
+    <img src="./assets/gm.gif" class="img ">
     <img src="./assets/bigboy.jpg" class="img float-end">
-    <img src="./assets/greekvase.gif" class="img ">
     <img src="./assets/yggdrasil.jpg" class="img float-start ">
+    <img src="./assets/greekvase.gif" class="img ">
     <img src="./assets/zeus.gif" class="img float-end">
     `
 })
