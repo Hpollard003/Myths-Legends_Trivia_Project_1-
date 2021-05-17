@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/8bd3605610.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./PROMETHEUS.css">
     <title>Myths & Legends Trivia</title>
+    <script defer src="index.js"></script>
 </head>
 
 <body>
@@ -18,43 +19,43 @@
         <div class="container">
             <h1 class="fab headliner display-2 my-4 fst-italic"> Myths <i class=" fa-d-and-d "></i> Legends Trivia</h1>
             <p></p>
-            <h3 class="fab score intro-line fs-2 ">Lets Test Your Skill ! 
-                                    <!--DropDown-->
-            <div class="dropdown fs-4 " id="dropdown"> 
-                <label class="text-success bg-dark py-3 " for="Difficulty"></label>
-                <select name="Difficulty" id="dropdownMenuButton" class="bg-dark border-dark bg-gradient text-light shadow-lg">
-                    <option value="select">Select Difficulty</option>
-                    <option value="medium">Children's Folklore</option>
-                    <option value="hard">Hardcore Knowledge</option>
-                </select>
-            </div>
+            <h3 class="fab score intro-line fs-2 ">Lets Test Your Skill !
+                <!--DropDown-->
+                <div class="dropdown fs-4 " id="dropdown">
+                    <label class="text-success bg-dark py-3 " for="Difficulty"></label>
+                    <select name="Difficulty" id="dropdownMenuButton"
+                        class="bg-dark border-dark bg-gradient text-light shadow-lg">
+                        <option value="select">Select Difficulty</option>
+                        <option value="medium">Children's Folklore</option>
+                        <option value="hard">Hardcore Knowledge</option>
+                    </select>
+                </div>
             </h3>
         </div>
     </div>
     <!--  Trivia body   -->
     <div class=" trivia rounded-bottom">
-        <h1 class="text-center gallery bg-gradient p-4 headliner fw-bold " >Gallery</h1>
+        <h1 class="text-center gallery bg-gradient p-4 headliner fw-bold ">Gallery</h1>
         <div class="container m-5">
             <div class=" bg-gradient rounded-bottom p-5 fixed-top shadow-lg" style="width: fit-content">
-            <div class="correct"></div>
-            <div class="incorrect"></div>
+                <div class="correct"></div>
+                <div class="incorrect"></div>
             </div>
-           
+
         </div>
-            <!--  Trivia Questions  -->
-            
-            <form class="trivia-form text-light fs-5 ">
-            
+        <!--  Trivia Questions  -->
+
+        <form class="trivia-form text-light fs-5 ">
+
             <div class="questions text-center py-4 " id="questions">
-                
+
                 <div class="images text-center"></div>
             </div>
-            </form>
-        </div>
+        </form>
     </div>
-    <script src="HEPHAESTUS.js"></script>
+    </div>
 
-<a class="fs-2 bg-dark godRating fixed-bottom rounded" style="width: fit-content;"> Project_1 by: H Pollard III</a>    
+    <a class="fs-2 bg-dark godRating fixed-bottom rounded" style="width: fit-content;"> Project_1 by: H Pollard III</a>
 </body>
 
 </html>

@@ -24,6 +24,14 @@ function renderTriviaQnA(data, index) {
     const option = document.querySelectorAll('.options')
     const newElement = document.createElement("ol")
     let options = [...data.incorrect_answers, data.correct_answer]
+    const deleteBtn = document.createElement('button')
+    deleteBtn.className = 'delete text-center'
+    deleteBtn.innerText = 'Delete'
+
+    deleteBtn.addEventListener('click' , (e) => {
+        e.preventDefault()
+        console.log(e.target.parentElement.remove())
+    })
     options = shuffle(options)
     const answers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     newElement.innerHTML = `
@@ -50,7 +58,8 @@ function renderTriviaQnA(data, index) {
     `
     gallery.innerText = ' '
     collection.appendChild(newElement);
-    // options.reverse()
+    newElement.appendChild(deleteBtn)
+    
     eventAnswers(data)
 }
 
@@ -124,13 +133,13 @@ gallery.addEventListener('click' , () => {
     const images = document.querySelector('.images')
     images.innerHTML = `
     <img src="./assets/vulcan.jpg" class="img float-start ">
-    <img src="./assets/hades.gif" class="img">
+    <img src="./assets/gm.gif" class="img ">
     <img src="./assets/raggy.gif" class="img float-end">
     <img src="./assets/loki.jpg" class="img float-start ">
     <img src="./assets/talos2.gif" class="img ">
     <img src="./assets/Ouroborus.jpg" class="img float-end">
     <img src="./assets/wendy.jpg" class="img float-start ">
-    <img src="./assets/gm.gif" class="img ">
+    <img src="./assets/hades.gif" class="img">
     <img src="./assets/bigboy.jpg" class="img float-end">
     <img src="./assets/yggdrasil.jpg" class="img float-start ">
     <img src="./assets/greekvase.gif" class="img ">
