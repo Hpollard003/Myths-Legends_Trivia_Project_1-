@@ -5,7 +5,8 @@ Project 1 : Version 7
 ## Demo Site
 https://mythtrivia-js.netlify.app
 
-    API : Mythological Trivia
+## Api Source
+API : Mythological Trivia
 
 url : https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple
 
