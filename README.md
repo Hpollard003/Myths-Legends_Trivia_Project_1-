@@ -12,7 +12,7 @@ url : https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=mul
 
 url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple
 
-    Event Listners :
+## Features
 
 1: Animated score
 
@@ -22,7 +22,7 @@ url : https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=m
 
 4:Open a gallery
 
-    GUI : As a user : 
+## Client Side
 
 1: When the page loads I want to see an inviting banner and under it a breif explanation of the site.
 
